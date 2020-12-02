@@ -26,7 +26,18 @@ Inicion (Despliegue de datos)
                 <td>{{ $empleado->Municipio }}</td>
                 <td>{{ $empleado->Telefono }}</td>
                 <td>{{ $empleado->Correo }}</td>
-                <td>Editar | Borrar</td>
+                <td>Editar |
+
+
+
+                {{-- Formulario para la accion eliminar --}}
+                <form method="POST" action="{{ url('/empleados/'.$empleado->id) }}">
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit" onclick="return confirm('¿Borrar?')">Borrar</button>
+                </form>
+                </td>
             </tr>
         @endforeach
     </tbody>
