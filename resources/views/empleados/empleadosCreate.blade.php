@@ -1,5 +1,6 @@
 Seccuion para crear empleados
 
+
 <form action="{{ url('/empleados') }}" method="POST">
     @csrf
 
@@ -36,4 +37,7 @@ Seccuion para crear empleados
     <br>
 
     <input type="submit" value="Agregar">
+
+    <br>
+    <a href="{{ url('empleados') }}">Regresar</a>
 </form>

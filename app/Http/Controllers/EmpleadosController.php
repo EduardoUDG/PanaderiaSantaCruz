@@ -49,8 +49,8 @@ class EmpleadosController extends Controller
         /* Insertamos los datos en la BD */
         Empleados::insert($datosEmpleado);
 
-        /* Retornamos los datos que fueron enviados */
-        return response()->json($datosEmpleado);
+        /* Una vez insertados los datos nos redireccionamos a lo siguiente*/
+        return redirect('empleados');
     }
 
     /**

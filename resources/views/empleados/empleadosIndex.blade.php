@@ -1,5 +1,8 @@
 Inicion (Despliegue de datos)
 
+<br>
+<a href="{{ url('empleados/create') }}">Agregar empleado</a>
+
 <table class="table table-light">
     <thead class="thead-light">
         <tr>
@@ -27,7 +30,6 @@ Inicion (Despliegue de datos)
                 <td>{{ $empleado->Telefono }}</td>
                 <td>{{ $empleado->Correo }}</td>
                 <td>
-
                     <a href="{{ url('/empleados/'.$empleado->id.'/edit') }}">
                         Editar
                     </a>
@@ -44,6 +46,8 @@ Inicion (Despliegue de datos)
                 </td>
             </tr>
         @endforeach
+
+
     </tbody>
 </table>
 
