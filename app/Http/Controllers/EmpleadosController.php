@@ -75,8 +75,6 @@ class EmpleadosController extends Controller
         // El metodo findOrFail() devuelve todos los datos del  $id
         $empleado=Empleados::findOrFail($id);
 
-
-
         // Nos redirecciona a la vista empleadosEdit, pero ocn los
         // datos del empleado con el id que se busco
         return view('empleados.empleadosEdit',compact('empleado'));
@@ -89,9 +87,25 @@ class EmpleadosController extends Controller
      * @param  \App\Models\Empleados  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Empleados $empleados)
+    public function update(Request $request, $id)
     {
         //
+        /* Recolectamos los datos del empleado, excepto el token y method*/
+        $datosEmpleado=request()->except(['_token','_method']);
+
+
+        // Actualizara los datos dependiendo el id
+        // preguntando si el id es igual al id que me preguntaron o pasaron po la url
+        Empleados::where('id','=',$id )->update($datosEmpleado);
+
+
+        // El metodo findOrFail() devuelve todos los datos del  $id
+        $empleado=Empleados::findOrFail($id);
+
+        // Nos redirecciona a la vista empleadosEdit, pero ocn los
+        // datos del empleado con el id que se busco
+        return view('empleados.empleadosEdit',compact('empleado'));
+
     }
 
     /**

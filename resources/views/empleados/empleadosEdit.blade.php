@@ -1,5 +1,8 @@
 
-<form action="" method="post">
+<form action="{{ url('/empleados/'.$empleado->id) }}" method="POST">
+
+    @csrf
+    @method('PATCH')
 
     <label for="Nombre">{{ 'Nombre' }}</label>
     <input type="text" name="Nombre" id="Nombre" value="{{ $empleado->Nombre }}">
@@ -33,4 +36,6 @@
     <input type="text" name="Edad" id="Edad" value="{{ $empleado->Edad }}">
     <br>
 
+
+    <input type="submit" value="Editar">
 </form>
