@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmpleadosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/empleados', [EmpleadosController::class, 'index']);
+
+// Route::get('/empleados/create', [EmpleadosController::class, 'create']);
+
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+/* Agregamos todas las rutas del controldor empleado:  index, create, show, edit ect.*/
+Route::resource('empleados', EmpleadosController::class);

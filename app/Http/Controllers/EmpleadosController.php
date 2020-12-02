@@ -15,6 +15,7 @@ class EmpleadosController extends Controller
     public function index()
     {
         //
+        return view('empleados.empleadosIndex');
     }
 
     /**
@@ -25,6 +26,7 @@ class EmpleadosController extends Controller
     public function create()
     {
         //
+        return view('empleados.empleadosCreate');
     }
 
     /**
