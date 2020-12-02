@@ -38,9 +38,10 @@ class EmpleadosController extends Controller
     public function store(Request $request)
     {
         //
+        /* Recolectamos los datos del empleado, excepto el token*/
+        $datosEmpleado=request()->except('_token');
 
-        $datosEmpleado=request()->all();
-
+        Empleados::insert($datosEmpleado);
 
         return response()->json($datosEmpleado);
     }
