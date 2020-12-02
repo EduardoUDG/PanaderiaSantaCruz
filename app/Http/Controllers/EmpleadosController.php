@@ -70,9 +70,16 @@ class EmpleadosController extends Controller
      * @param  \App\Models\Empleados  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function edit(Empleados $empleados)
+    public function edit($id)
     {
-        //
+        // El metodo findOrFail() devuelve todos los datos del  $id
+        $empleado=Empleados::findOrFail($id);
+
+
+
+        // Nos redirecciona a la vista empleadosEdit, pero ocn los
+        // datos del empleado con el id que se busco
+        return view('empleados.empleadosEdit',compact('empleado'));
     }
 
     /**
@@ -96,8 +103,11 @@ class EmpleadosController extends Controller
     public function destroy($id)
     {
         //
+        /* recuperamos el id que se mando de empleadosIndex y lo eliminamos */
         Empleados::destroy($id);
 
+
+        /* Una vez eliminado, nos redirigiremos a la ruta /empleados */
         return redirect('empleados');
     }
 }

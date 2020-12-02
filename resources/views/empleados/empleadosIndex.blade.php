@@ -26,9 +26,13 @@ Inicion (Despliegue de datos)
                 <td>{{ $empleado->Municipio }}</td>
                 <td>{{ $empleado->Telefono }}</td>
                 <td>{{ $empleado->Correo }}</td>
-                <td>Editar |
+                <td>
 
+                    <a href="{{ url('/empleados/'.$empleado->id.'/edit') }}">
+                        Editar
+                    </a>
 
+                    |
 
                 {{-- Formulario para la accion eliminar --}}
                 <form method="POST" action="{{ url('/empleados/'.$empleado->id) }}">
