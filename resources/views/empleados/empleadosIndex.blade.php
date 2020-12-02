@@ -1,6 +1,11 @@
-Inicion (Despliegue de datos)
 
-<br>
+
+@if (Session::has('Mensaje')){{
+    Session::get('Mensaje')
+}}
+@endif
+
+
 <a href="{{ url('empleados/create') }}">Agregar empleado</a>
 
 <table class="table table-light">
@@ -50,4 +55,3 @@ Inicion (Despliegue de datos)
 
     </tbody>
 </table>
-

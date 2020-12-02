@@ -50,7 +50,7 @@ class EmpleadosController extends Controller
         Empleados::insert($datosEmpleado);
 
         /* Una vez insertados los datos nos redireccionamos a lo siguiente*/
-        return redirect('empleados');
+        return redirect('empleados')->with('Mensaje','Empleado agregado con éxito');
     }
 
     /**
@@ -99,13 +99,11 @@ class EmpleadosController extends Controller
         Empleados::where('id','=',$id )->update($datosEmpleado);
 
 
-        // El metodo findOrFail() devuelve todos los datos del  $id
-        $empleado=Empleados::findOrFail($id);
+        // Esto es opcional en caso de que se quiera redireccionar al mismo formulario e editar
+        // $empleado=Empleados::findOrFail($id);
+        // return view('empleados.empleadosEdit',compact('empleado'));
 
-        // Nos redirecciona a la vista empleadosEdit, pero ocn los
-        // datos del empleado con el id que se busco
-        return view('empleados.empleadosEdit',compact('empleado'));
-
+        return redirect('empleados')->with('Mensaje','Empleado modificado con éxito');
     }
 
     /**
@@ -122,6 +120,6 @@ class EmpleadosController extends Controller
 
 
         /* Una vez eliminado, nos redirigiremos a la ruta /empleados */
-        return redirect('empleados');
+        return redirect('empleados')->with('Mensaje','Empleado eliminado');
     }
 }
