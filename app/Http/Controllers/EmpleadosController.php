@@ -15,7 +15,12 @@ class EmpleadosController extends Controller
     public function index()
     {
         //
-        return view('empleados.empleadosIndex');
+        // Recuperamos los datos de la tabla empleado (ya almacenados en BD)
+        $datos['empleados'] = Empleados::paginate(5);
+
+
+
+        return view('empleados.empleadosIndex', $datos);
     }
 
     /**
@@ -41,8 +46,10 @@ class EmpleadosController extends Controller
         /* Recolectamos los datos del empleado, excepto el token*/
         $datosEmpleado=request()->except('_token');
 
+        /* Insertamos los datos en la BD */
         Empleados::insert($datosEmpleado);
 
+        /* Retornamos los datos que fueron enviados */
         return response()->json($datosEmpleado);
     }
 
