@@ -1,8 +1,9 @@
 
 
-@if (Session::has('Mensaje')){{
-    Session::get('Mensaje')
-}}
+@if (Session::has('Mensaje'))
+<div class="alert alert-success">
+    {{ Session::get('Mensaje') }}
+</div>
 @endif
 
 
@@ -55,3 +56,5 @@
 
     </tbody>
 </table>
+
+{{ $empleados->links() }}
