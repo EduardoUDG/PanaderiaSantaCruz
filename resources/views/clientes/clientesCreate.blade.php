@@ -1,4 +1,4 @@
-Seccion para crear empleados
+Seccion para crear clientes
 
 
 @if (count($errors)>0)
@@ -12,9 +12,9 @@ Seccion para crear empleados
 @endif
 
 
-<form action="{{ url('/empleados') }}" method="POST">
+<form action="{{ url('/clientes') }}" method="POST">
     @csrf
 
-    @include('empleados.empleadosForm', ['Modo'=>'crear'])
+    @include('clientes.clientesForm', ['Modo'=>'crear'])
 
 </form>

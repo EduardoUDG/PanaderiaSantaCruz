@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\EmpleadosController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,5 +33,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 /* Agregamos todas las rutas del controldor empleado:  index, create, show, edit ect.*/
 Route::resource('empleados', EmpleadosController::class);
+
+Route::resource('clientes', ClientesController::class);
 
 /* ->middleware('auth') */
