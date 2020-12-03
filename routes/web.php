@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\EmpleadosController;
+use App\Http\Controllers\ProductosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,5 +36,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::resource('empleados', EmpleadosController::class);
 
 Route::resource('clientes', ClientesController::class);
+
+Route::resource('productos', ProductosController::class);
 
 /* ->middleware('auth') */
