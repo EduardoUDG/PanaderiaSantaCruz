@@ -29,7 +29,7 @@
                     <img src="{{ asset('storage').'/'.$producto->Foto }}" class="img-thumbnail img-fluid" alt="" width="100">
                 </td>
                 <td>{{ $producto->Nombre }}</td>
-                <td>{{ $producto->Precio }}</td>
+                <td>${{ $producto->Precio }}</td>
                 <td>{{ $producto->Descripcion }}</td>
                 <td>
                     <a href="{{ url('/productos/'.$producto->id.'/edit') }}">

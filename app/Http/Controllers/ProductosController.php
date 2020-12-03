@@ -44,15 +44,15 @@ class ProductosController extends Controller
         //
         // Validacion sencilla mediante laravel
         $campos=[
-            'Nombre' => 'required|string|max:100',
-            'Precio' => 'required|string|max:1',
+            'Nombre' => 'required|string|max:30',
+            'Precio' => 'required|string|max:2',
             'Descripcion' => 'required|string|',
             'Foto' => 'required|max:10000|mimes:jpeg,png,jpg'
         ];
         // Mensaje de alerta formulario
         // si en el formulaio encuentra un required que no se ha insertado
         // un elemento valido, insertara el atributo del required con el texto derecho
-        $Mensaje=["required"=>'El :attribute es requerido'];
+        $Mensaje=["required"=>'El campo :attribute es requerido'];
 
         // Con este metodo validamos toda la informacion anterior ↑
         $this->validate($request,$campos,$Mensaje);
@@ -109,10 +109,9 @@ class ProductosController extends Controller
         //
         // Validacion sencilla mediante laravel
         $campos=[
-            'Nombre' => 'required|string|max:100',
-            'Precio' => 'required|string|max:1',
+            'Nombre' => 'required|string|max:30',
+            'Precio' => 'required|string|max:2',
             'Descripcion' => 'required|string|',
-            'Foto' => 'required|max:10000|mimes:jpeg,png,jpg'
         ];
 
         if($request->hasFile('Foto')){
@@ -124,7 +123,7 @@ class ProductosController extends Controller
         // Mensaje de alerta formulario
         // si en el formulaio encuentra un required que no se ha insertado
         // un elemento valido, insertara el atributo del required con el texto derecho
-        $Mensaje=["required"=>'El :attribute es requerido'];
+        $Mensaje=["required"=>'El campo :attribute es requerido'];
 
         // Con este metodo validamos toda la informacion anterior ↑
         $this->validate($request,$campos,$Mensaje);
