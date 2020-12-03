@@ -89,7 +89,7 @@ class ClientesController extends Controller
         // El metodo findOrFail() devuelve todos los datos del  $id
         $cliente=Clientes::findOrFail($id);
 
-        // Nos redirecciona a la vista empleadosEdit, pero ocn los
+        // Nos redirecciona a la vista clientesEdit, pero ocn los
         // datos del empleado con el id que se busco
         return view('clientes.clientesEdit',compact('cliente'));
     }
@@ -128,10 +128,10 @@ class ClientesController extends Controller
 
 
         // Esto es opcional en caso de que se quiera redireccionar al mismo formulario e editar
-        // $empleado=Empleados::findOrFail($id);
-        // return view('empleados.empleadosEdit',compact('empleado'));
+        // $cliente=Clientes::findOrFail($id);
+        // return view('clientes.clientesEdit',compact('empleado'));
 
-        return redirect('clientes')->with('Mensaje','Empleado modificado con éxito');
+        return redirect('clientes')->with('Mensaje','Cliente modificado con éxito');
     }
 
     /**
@@ -143,11 +143,11 @@ class ClientesController extends Controller
     public function destroy($id)
     {
         //
-         /* recuperamos el id que se mando de empleadosIndex y lo eliminamos */
+         /* recuperamos el id que se mando de clientesIndex y lo eliminamos */
          Clientes::destroy($id);
 
 
-         /* Una vez eliminado, nos redirigiremos a la ruta /empleados */
-         return redirect('clientes')->with('Mensaje','Empleado eliminado');
+         /* Una vez eliminado, nos redirigiremos a la ruta /clientes */
+         return redirect('clientes')->with('Mensaje','Cliente eliminado');
     }
 }
