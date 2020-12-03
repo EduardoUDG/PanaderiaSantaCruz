@@ -104,6 +104,20 @@ class EmpleadosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $campos=[
+            'Nombre' => 'required|string|max:50',
+            'ApellidoPaterno' => 'required|string|max:50',
+            'ApellidoMaterno' => 'required|string|max:50',
+            'Direccion' => 'required|string|max:100',
+            'Municipio' => 'required|string|max:100',
+            'Telefono' => 'required|string|max:10',
+            'Correo' => 'required|email',
+            'Edad' => 'required|string|max:3',
+        ];
+
+        $Mensaje=["required"=>'El campo :attribute es requerido'];
+        $this->validate($request,$campos,$Mensaje);
+        
         /* Recolectamos los datos del empleado, excepto el token y method*/
         $datosEmpleado=request()->except(['_token','_method']);
 
