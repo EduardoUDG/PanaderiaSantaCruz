@@ -4,8 +4,9 @@
 
 
 <label for="Nombre">{{ 'Nombre' }}</label>
-<input type="text" name="Nombre" id="Nombre"
-value="{{ isset($empleado->Nombre)?$empleado->Nombre : '' }}">
+<input type="text" name="Nombre" id="Nombre" class="{{ $errors->has('Nombre')?'is-invalid':'' }}"
+value="{{ isset($empleado->Nombre)?$empleado->Nombre : old('Nombre') }}">
+{!! $errors->first('Nombre','<div class="invalid-feedback">:message</div>') !!}
 <br>
 
 <label for="ApellidoPaterno">{{ 'Apellido Paterno' }}</label>
