@@ -1,4 +1,3 @@
-Seccion para crear productos
 
 
 @if (count($errors)>0)

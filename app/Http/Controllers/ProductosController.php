@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Productos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductosController extends Controller
 {
@@ -15,6 +16,10 @@ class ProductosController extends Controller
     public function index()
     {
         //
+        $datos['productos']=Productos::paginate(5);
+
+
+        return view('productos.productosIndex',$datos);
     }
 
     /**
@@ -25,6 +30,7 @@ class ProductosController extends Controller
     public function create()
     {
         //
+        return view('productos.productosCreate');
     }
 
     /**
@@ -36,6 +42,34 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         //
+        // Validacion sencilla mediante laravel
+        $campos=[
+            'Nombre' => 'required|string|max:100',
+            'Precio' => 'required|string|max:1',
+            'Descripcion' => 'required|string|',
+            'Foto' => 'required|max:10000|mimes:jpeg,png,jpg'
+        ];
+        // Mensaje de alerta formulario
+        // si en el formulaio encuentra un required que no se ha insertado
+        // un elemento valido, insertara el atributo del required con el texto derecho
+        $Mensaje=["required"=>'El :attribute es requerido'];
+
+        // Con este metodo validamos toda la informacion anterior ↑
+        $this->validate($request,$campos,$Mensaje);
+
+
+
+        $datosProducto=request()->except('_token');
+
+        if($request->hasFile('Foto')){
+
+            $datosProducto['Foto']=$request->file('Foto')->store('uploads','public');
+
+        }
+
+        Productos::insert($datosProducto);
+
+        return redirect('productos')->with('Mensaje','Producto agregado con éxito');
     }
 
     /**
@@ -55,9 +89,12 @@ class ProductosController extends Controller
      * @param  \App\Models\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Productos $productos)
+    public function edit($id)
     {
         //
+        $producto= Productos::findOrFail($id);
+
+        return view('productos.productosEdit',compact('producto'));
     }
 
     /**
@@ -67,9 +104,51 @@ class ProductosController extends Controller
      * @param  \App\Models\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Productos $productos)
+    public function update(Request $request, $id)
     {
         //
+        // Validacion sencilla mediante laravel
+        $campos=[
+            'Nombre' => 'required|string|max:100',
+            'Precio' => 'required|string|max:1',
+            'Descripcion' => 'required|string|',
+            'Foto' => 'required|max:10000|mimes:jpeg,png,jpg'
+        ];
+
+        if($request->hasFile('Foto')){
+
+            $campos+=['Foto' => 'required|max:10000|mimes:jpeg,png,jpg'];
+
+        }
+
+        // Mensaje de alerta formulario
+        // si en el formulaio encuentra un required que no se ha insertado
+        // un elemento valido, insertara el atributo del required con el texto derecho
+        $Mensaje=["required"=>'El :attribute es requerido'];
+
+        // Con este metodo validamos toda la informacion anterior ↑
+        $this->validate($request,$campos,$Mensaje);
+
+
+        $datosProducto=request()->except(['_token','_method']);
+
+        if($request->hasFile('Foto')){
+
+            $producto= Productos::findOrFail($id);
+
+            Storage::delete('public/'.$producto->Foto);
+
+            $datosProducto['Foto']=$request->file('Foto')->store('uploads','public');
+
+        }
+
+        Productos::where('id','=',$id)->update($datosProducto);
+
+
+        // $empleado= Empleados::findOrFail($id);
+        // return view('empleados.empleadosEdit',compact('empleado'));
+
+        return redirect('productos')->with('Mensaje','Producto modificado con éxito');
     }
 
     /**
@@ -78,8 +157,16 @@ class ProductosController extends Controller
      * @param  \App\Models\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Productos $productos)
+    public function destroy($id)
     {
         //
+        $producto= Productos::findOrFail($id);
+
+        if(Storage::delete('public/'.$producto->Foto)){
+            Productos::destroy($id);
+
+        }
+
+        return redirect('productos')->with('Mensaje','Producto Eliminado');
     }
 }

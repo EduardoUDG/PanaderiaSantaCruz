@@ -21,13 +21,14 @@ value="{{ isset($producto->Descripcion)?$producto->Descripcion : old('Descripcio
 {!! $errors->first('Descripcion','<div class="invalid-feedback">:message</div>') !!}
 <br>
 
+
 <label for="Foto">{{ 'Foto' }}</label>
-@if (isset($empleado->Foto))
+@if (isset($producto->Foto))
 <br/>
 <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$producto->Foto }}" alt="" width="100">
 <br/>
 @endif
-<input type="file" name="Foto" id="Foto" class="{{ $errors->has('Foto')?'is-invalid':'' }}">
+<input type="file" class="{{ $errors->has('Foto')?'is-invalid':'' }}" name="Foto" id="Foto" value="">
 {!! $errors->first('Foto','<div class="invalid-feedback">:message</div>') !!}
 <br>
 
