@@ -31,4 +31,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 /* Agregamos todas las rutas del controldor empleado:  index, create, show, edit ect.*/
-Route::resource('empleados', EmpleadosController::class);
+Route::resource('empleados', EmpleadosController::class)->middleware('auth');
