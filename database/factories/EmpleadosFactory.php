@@ -22,13 +22,13 @@ class EmpleadosFactory extends Factory
     public function definition()
     {
         return [
-            'Nombre' => $this->faker->sentence(),
+            'Nombre' => $this->faker->name,
             'ApellidoPaterno' => $this->faker->sentence(),
             'ApellidoMaterno' => $this->faker->sentence(),
             'Direccion' => $this->faker->sentence(),
             'Municipio' => $this->faker->sentence(),
             'Telefono' => $this->faker->sentence(),
-            'Correo' => $this->faker->sentence(),
+            'Correo' => $this->faker->unique()->safeEmail,
             'Edad' => $this->faker->randomElement(['18','34','23','32','21','19'])
         ];
     }
