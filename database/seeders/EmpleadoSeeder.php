@@ -15,16 +15,6 @@ class EmpleadoSeeder extends Seeder
     public function run()
     {
         //
-        $empleado = new Empleados();
-        $empleado->Nombre = "Nombre empleado";
-        $empleado->ApellidoPaterno = "ApellidoPaterno";
-        $empleado->ApellidoMaterno = "ApellidoMaterno";
-        $empleado->Direccion = "Av. romero 231";
-        $empleado->Municipio = "El verde";
-        $empleado->Telefono = "3322384834";
-        $empleado->Correo = "empleado@correo.com";
-        $empleado->Edad = "18";
-
-        $empleado->save();
+        Empleados::factory(50)->create();
     }
 }
