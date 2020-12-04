@@ -44,8 +44,8 @@ class ProductosController extends Controller
         //
         // Validacion sencilla mediante laravel
         $campos=[
-            'Nombre' => 'required|string|max:30',
-            'Precio' => 'required|string|max:2',
+            'Nombre' => 'required|string|max:100',
+            'Precio' => 'required|string|max:3',
             'Descripcion' => 'required|string|',
             'Foto' => 'required|max:10000|mimes:jpeg,png,jpg'
         ];
@@ -109,8 +109,8 @@ class ProductosController extends Controller
         //
         // Validacion sencilla mediante laravel
         $campos=[
-            'Nombre' => 'required|string|max:30',
-            'Precio' => 'required|string|max:2',
+            'Nombre' => 'required|string|max:100',
+            'Precio' => 'required|string|max:3',
             'Descripcion' => 'required|string|',
         ];
 
