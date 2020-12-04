@@ -1,9 +1,16 @@
+@extends('layouts.plantilla')
 
-<form action="{{ url('/productos/'.$producto->id) }}" method="POST" enctype="multipart/form-data">
+@section('title', 'Productos edit')
 
-    @csrf
-    @method('PATCH')
+@section('content')
 
-    @include('productos.productosForm', ['Modo'=>'editar'])
+    <form action="{{ url('/productos/' . $producto->id) }}" method="POST" enctype="multipart/form-data">
 
-</form>
+        @csrf
+        @method('PATCH')
+
+        @include('productos.productosForm', ['Modo'=>'editar'])
+
+    </form>
+
+@endsection

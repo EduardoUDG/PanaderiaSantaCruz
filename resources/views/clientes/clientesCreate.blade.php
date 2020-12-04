@@ -1,3 +1,8 @@
+@extends('layouts.plantilla')
+
+@section('title', 'Clientes create')
+
+@section('content')
 Seccion para crear clientes
 
 
@@ -18,3 +23,6 @@ Seccion para crear clientes
     @include('clientes.clientesForm', ['Modo'=>'crear'])
 
 </form>
+
+
+@endsection

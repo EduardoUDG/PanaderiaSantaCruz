@@ -1,4 +1,8 @@
+@extends('layouts.plantilla')
 
+@section('title', 'Productos form')
+
+@section('content')
 
 {{ $Modo =='crear' ?  'Agregar producto' : 'Modificar producto'}}
 
@@ -37,3 +41,5 @@ value="{{ isset($producto->Descripcion)?$producto->Descripcion : old('Descripcio
 
 
 <a href="{{ url('productos') }}">Regresar</a>
+
+@endsection

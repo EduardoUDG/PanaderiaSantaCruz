@@ -1,4 +1,8 @@
+@extends('layouts.plantilla')
 
+@section('title', 'Productos index')
+
+@section('content')
 
 @if (Session::has('Mensaje'))
 <div class="alert alert-success">
@@ -54,3 +58,6 @@
 </table>
 
 {{ $productos->links() }}
+
+
+@endsection

@@ -1,4 +1,8 @@
+@extends('layouts.plantilla')
 
+@section('title', 'Productos edit')
+
+@section('content')
 
 @if (count($errors)>0)
 <div class="alert">
@@ -17,3 +21,6 @@ Seccion para crear productos
     @include('productos.productosForm', ['Modo'=>'crear'])
 
 </form>
+
+
+@endsection

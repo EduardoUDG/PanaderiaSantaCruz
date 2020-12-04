@@ -1,5 +1,9 @@
-Seccion para crear empleados
+@extends('layouts.plantilla')
 
+
+@section('title', 'Empleados create')
+
+@section('content')
 
 @if (count($errors)>0)
 <div class="alert">
@@ -18,3 +22,5 @@ Seccion para crear empleados
     @include('empleados.empleadosForm', ['Modo'=>'crear'])
 
 </form>
+
+@endsection
