@@ -13,6 +13,7 @@
 
 <a href="{{ url('clientes/create') }}">Agregar cliente</a>
 
+
 <table class="table table-light">
     <thead class="thead-light">
         <tr>
