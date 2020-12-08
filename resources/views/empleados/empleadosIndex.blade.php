@@ -11,11 +11,20 @@
 </div>
 @endif
 
-
-<a href="{{ url('empleados/create') }}">Agregar empleado</a>
-
 <div class="container">
-<h1 class="mb-8"> Empleados registrados :) </h1>
+    <h1 class="uppercase"> Empleados registrados :) </h1>
+
+<div class="flex items-center justify-center">
+<div class="m-3">
+    <button class="bg-white text-gray-800 font-bold rounded border-b-2 border-green-500 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+    <span class="mr-2"><a href="{{ url('empleados/create') }}">Agregar empleado</a></span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+    </svg>
+</div>
+</div>
+
+
 <table class="text-left w-full">
     <thead class="bg-black flex text-white w-full">
         <tr class="flex w-full mb-4">
