@@ -14,7 +14,7 @@
 <div class="container">
     <h1 class="uppercase"> Empleados registrados :) </h1>
 
-<div class="flex items-center justify-center">
+<div class=" d-block">
 <div class="m-3">
     <button class="bg-white text-gray-800 font-bold rounded border-b-2 border-green-500 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
     <span class="mr-2"><a href="{{ url('empleados/create') }}">Agregar empleado</a></span>
@@ -74,7 +74,11 @@
 </table>
 </div>
 
-{{ $empleados->links() }}
+
+<div class="d-flex justify-center mx-auto">
+    {{ $empleados->links() }}
+</div>
+
 
 @endsection
 
