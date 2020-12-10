@@ -1,8 +1,4 @@
-@extends('layouts.plantilla')
 
-@section('title', 'Clientes form')
-
-@section('content')
 
 {{ $Modo =='crear' ?  'Agregar cliente' : 'Modificar cliente'}}
 
@@ -60,4 +56,3 @@ value="{{ isset($cliente->Edad)?$cliente->Edad : old('Edad') }}">
 
 <a href="{{ url('clientes') }}">Regresar</a>
 
-@endsection

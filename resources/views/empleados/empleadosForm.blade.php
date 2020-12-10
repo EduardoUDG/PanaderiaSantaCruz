@@ -1,8 +1,4 @@
-@extends('layouts.plantilla')
 
-@section('title', 'Empleados form')
-
-@section('content')
 
 
 {{ $Modo =='crear' ?  'Agregar empleado' : 'Modificar empleado'}}
@@ -61,4 +57,3 @@ value="{{ isset($empleado->Edad)?$empleado->Edad : old('Edad') }}">
 
 <a href="{{ url('empleados') }}">Regresar</a>
 
-@endsection
